@@ -11,6 +11,7 @@
     <asp:Button ID="Button1" runat="server" PostBackUrl="~/test.aspx" 
         Text="Button" />
     <div>
+        <asp:Button ID="Button2" runat="server" Text="Button" />
     </div>
     </form>
 </body>

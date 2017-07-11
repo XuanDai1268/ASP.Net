@@ -12,7 +12,6 @@
     <div>
         <asp:Image ID="Image1" runat="server" Height="197px" Width="250px" />
         <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-        <asp:Button ID="Button1" runat="server" Text="Button" />
     </div>
     </form>
 </body>
