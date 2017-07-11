@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TeeView iTeeViewID="0" cTeeViewName="导航栏">
+  <SelectDetector iSelectDetectorID="100" cSelectDetectorName="选择探测器">
+    <Furnace iTeeViewID="1" cTeeViewName="1# 炉">
+      <Detector iTeeViewID="1011" cTeeViewName="1# 探测器" />
+      <Detector iTeeViewID="1012" cTeeViewName="2# 探测器" />
+      <Detector iTeeViewID="1013" cTeeViewName="3# 探测器" />
+    </Furnace>
+    <Furnace iTeeViewID="2" cTeeViewName="2# 炉">
+      <Detector iTeeViewID="1021" cTeeViewName="1# 探测器" />
+      <Detector iTeeViewID="1022" cTeeViewName="2# 探测器" />
+      <Detector iTeeViewID="1023" cTeeViewName="3# 探测器" />
+    </Furnace>
+    <Furnace iTeeViewID="3" cTeeViewName="3# 炉">
+      <Detector iTeeViewID="1031" cTeeViewName="1# 探测器" />
+      <Detector iTeeViewID="1032" cTeeViewName="2# 探测器" />
+    </Furnace>
+  </SelectDetector>
+  <FunctionalGroup iFunctionalGroupID="20" cFunctionalGroupName="功能模块">
+    <DataAnalysis iDataAnalysisID="21" cDataAnalysisName="数据分析">
+      <PointAnalysis iPointAnalysisID="22" cPointAnalysisName="点分析" />
+      <LineAnalysis iLineAnalysisID="23" cLineAnalysisName="线分析" />
+      <FaceAnalysis iFaceAnalysisID="24" cFaceAnalysisName="面分析" />
+    </DataAnalysis>
+    <DataForecast iDataForecastID="25" cDataForecastName="数据预测" />
+    <DataInspect iDataInspectID="26" cDataInspectName="数据检索" />
+  </FunctionalGroup>
+  <SystemData iSystemDataID="30" cSystemDataName="系统参数设置" />
+</TeeView>

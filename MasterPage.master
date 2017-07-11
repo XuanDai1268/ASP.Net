@@ -1,0 +1,227 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>加热炉温度监测与分析系统</title>
+    <script src="JS/jquery-1.9.1.js" type="text/javascript"></script>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        
+         #GridView1 {}
+        
+        #GridView1 th
+        {
+            color:Black;
+            font-size:16px;
+            }
+        #GridView1 td
+        {
+            padding:10px;
+            font-size:13px;
+            color:Gray;
+            }
+        #GridView1 tr:hover
+        {
+            background-color:#ddefed;
+            }
+        .style0
+        {
+            width: 1338px;
+            height:560px;
+            background-color:#000000; 
+        }
+        .style1
+        {
+            width: 234px;
+            height:560px;
+            background-color:#000000;
+        }
+        .style2    
+        {
+            width: 780px;
+            height:560px;
+            background-color:#000000;
+        }
+        .style3
+        {
+            width: 256px;
+            height:560px;
+            background-color:#FFFFFF;
+        }
+        .style4
+        {
+            width: 250px;
+            height: 172px;
+            background-color: #000000;
+        }
+        .style5
+        {
+            width: 298px;
+            height: 172px;
+            background-color: #000000;
+        }
+        .style6
+        {
+            width: 270px;
+            height: 172px;
+            background-color: #000000;
+        }
+        .fontstyle
+        {
+             color:white;
+             border-color:#000000;
+             text-align:center;
+        }
+        .ee 
+        { 
+            LEFT: 554px;
+            top:82px;
+            POSITION: absolute;
+            height: 97px;
+            width: 86px;
+        } 
+        .bwidth
+        {
+            width:63px
+        }
+        .button
+        {
+            .button
+            {
+                width:56px;      /*图片宽度*/
+                background:url(~/image/play.gif) no-repeat left top;   /* 图片路径*/
+                border:none;  /*去掉边框*/
+                height:21px; /*图片高度*/
+            }
+        }
+        </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div class="style0">
+        <table border="0" cellspacing="0" cellpadding="0" style="width: 100%" >
+        	<tr>
+                <td class="style1">
+                    <asp:TreeView ID="TreeView1" runat="server" DataSourceID="XmlDataSource1" 
+                        Height="576px" Font-Size="Large" style="margin-top: 0px" 
+                        onselectednodechanged="treeT_SelectedNodeChanged" Width="110px" 
+                        ShowLines="True">
+                        <DataBindings>
+                            <asp:TreeNodeBinding DataMember="选择探测器" />
+                        </DataBindings>
+                        <HoverNodeStyle BackColor="Red" />
+                        <LeafNodeStyle BackColor="Black" />
+                        <NodeStyle BackColor="Black" ForeColor="White" />
+                        <SelectedNodeStyle BackColor="Red" BorderColor="Lime" />
+                    </asp:TreeView>
+                    <asp:XmlDataSource ID="XmlDataSource1" runat="server" DataFile="~/TeeView.xml">
+                    </asp:XmlDataSource>
+                </td>
+                <td class="style2">
+                    <table border="0" cellspacing="0" cellpadding="0" style="width:768px; margin-bottom: 0px;">
+                        <asp:ScriptManager ID="ScriptManager1" runat="server">
+                        </asp:ScriptManager>
+                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                            <ContentTemplate>
+                                <p style="height: 430px; margin-top: 0px; width: 769px;">
+                                      <asp:Image ID="Image1" runat="server" Height="432px" 
+                                        style="margin-top: 0px; margin-left: 0px; margin-bottom: 0px;" Width="768px" />
+                                </p>
+                            </ContentTemplate>
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="Button4" />
+                            </Triggers>
+                        </asp:UpdatePanel>
+                    </table>
+                    <table border="0" cellspacing="0" cellpadding="0" style="width:768px; margin-bottom: 0px;">
+        	        <tr>
+                        <td class="style4">
+                            <asp:Label ID="Label1" runat="server" BackColor="Lime" Text="起始日期："></asp:Label>
+                            <br />
+                            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                                <ContentTemplate>
+                                    <asp:Calendar ID="Calendar1" runat="server" Font-Size="Small" 
+                                        onselectionchanged="Calendar1_SelectionChanged">
+                                        <DayHeaderStyle BackColor="#3366FF" />
+                                        <DayStyle BackColor="#00FFCC" />
+                                        <OtherMonthDayStyle BackColor="Silver" />
+                                        <SelectedDayStyle BackColor="#FF3300" />
+                                        <SelectorStyle BackColor="Lime" />
+                                        <TitleStyle BackColor="#0099FF" />
+                                        <TodayDayStyle BackColor="#FF6600" ForeColor="#66FF33" />
+                                        <WeekendDayStyle ForeColor="Red" /> 
+                                        </asp:Calendar>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </td>
+                        <td class="style6">
+                            <asp:Label ID="Label2" runat="server" BackColor="Lime" Text="截止日期："></asp:Label>
+                            <br />
+                            <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                                <ContentTemplate>
+                                    <asp:Calendar ID="Calendar2" runat="server" Font-Size="Small" 
+                                        onselectionchanged="Calendar2_SelectionChanged">
+                                        <DayHeaderStyle BackColor="#3366FF" />
+                                        <DayStyle BackColor="#00FFCC" />
+                                        <OtherMonthDayStyle BackColor="Silver" />
+                                        <SelectedDayStyle BackColor="#FF3300" />
+                                        <SelectorStyle BackColor="Lime" />
+                                        <TitleStyle BackColor="#0099FF" />
+                                        <TodayDayStyle BackColor="#FF6600" ForeColor="#66FF33" />
+                                        <WeekendDayStyle ForeColor="Red" /> 
+                                   </asp:Calendar>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </td>
+                        <td class="style5">
+                            <asp:Panel ID="Panel1" runat="server" ForeColor="White">
+                                温度阈值（低）：<asp:TextBox ID="TextBox1" runat="server" Width="113px"></asp:TextBox>
+                            </asp:Panel>
+                            <asp:Panel ID="Panel2" runat="server" ForeColor="White">
+                                &nbsp;&nbsp;
+                            </asp:Panel>
+                            <asp:Panel ID="Panel4" runat="server" ForeColor="White">
+                                温度阈值（高）：<asp:TextBox ID="TextBox2" runat="server" Width="113px"></asp:TextBox>
+                            </asp:Panel>
+                            <asp:Panel ID="Panel3" runat="server" ForeColor="White">
+                                &nbsp;&nbsp;
+                            </asp:Panel>
+                            <asp:Panel ID="Panel8" runat="server" ForeColor="White">
+                                <asp:Button 
+                                ID="Button1" runat="server" Font-Names="Broadway" 
+                                Font-Size="Large" ForeColor="#000000" Height="35px" Text="数据检索" 
+                                Width="97px" onclick="Button1_Click" />
+                                &nbsp;&nbsp;
+                                <asp:Button ID="Button3" runat="server" Font-Size="Large" ForeColor="#000000" Text="设置阈值" Height="35px" />
+                            </asp:Panel>
+                        </td>
+                    </tr>
+                   </table>
+                </td>
+                <td class="style3">
+                    <table border="0" cellspacing="0" cellpadding="0" style="width:378px; margin-bottom: 0px;">
+                    <tr>
+                        <td class="bwidth">   
+                            <asp:Panel ID="Panel9" runat="server" Width="173px">
+                                <asp:Button ID="Button4" runat="server" Text="播 放" CssClass="button" 
+                                    BackColor="#00FF99" onclick="Button4_Click" />
+                                <asp:Button ID="Button2" runat="server" Text="暂 停" BackColor="#00FF99" />
+                                <asp:Button ID="Button5" runat="server" Text="停 止" BackColor="#00FF99" />
+                            </asp:Panel>
+                        </td>
+                    </tr>
+                    </table>
+                    <table border="0" cellspacing="0" cellpadding="0" style="width:378px; margin-bottom: 0px;">
+                        <asp:ContentPlaceHolder id="FunctionalGroup" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+    </form>
+</body>
+</html>

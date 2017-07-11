@@ -1,0 +1,20 @@
+ <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+                            </asp:ContentPlaceHolder>
+
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+     <p style="height: 430px; margin-top: 0px; width: 769px;">
+        <asp:Image ID="Image1" runat="server" Height="432px" 
+            ImageUrl="~/image/Show.bmp" 
+            style="margin-top: 0px; margin-left: 0px; margin-bottom: 0px;" Width="768px" />
+    </p>
+</asp:Content>
+
+
+运行不安全代码
+<system.codedom>
+    <compilers>
+        <!--允许运行不安全代码-->
+            <compiler language = "c#;cs;csharp" warningLevel="4" extension=".cs" type="Microsoft.CSharp.CSharpCodeProvider,System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" compilerOptions="/unsafe+" />
+    </compilers>
+  </system.codedom>
