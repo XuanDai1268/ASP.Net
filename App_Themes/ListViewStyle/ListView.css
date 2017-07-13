@@ -1,0 +1,21 @@
+﻿.LS 
+{  
+    border:solid 1px #cccccc;  
+    width:250px;  
+}  
+.LS th 
+{  
+    color: #00FFFF;  
+    background: #284775;  
+    font-weight: normal;  
+    padding: 2px;  
+ }  
+ .LS tr 
+ {  
+    border:solid 1px black;  
+ }  
+ td 
+ {  
+    border:groove 1px #ffd800;  
+ }  
+          

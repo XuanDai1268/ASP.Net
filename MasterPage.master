@@ -9,24 +9,6 @@
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
     <style type="text/css">
-        
-         #GridView1 {}
-        
-        #GridView1 th
-        {
-            color:Black;
-            font-size:16px;
-            }
-        #GridView1 td
-        {
-            padding:10px;
-            font-size:13px;
-            color:Gray;
-            }
-        #GridView1 tr:hover
-        {
-            background-color:#ddefed;
-            }
         .style0
         {
             width: 1338px;
@@ -139,9 +121,13 @@
                     <table border="0" cellspacing="0" cellpadding="0" style="width:768px; margin-bottom: 0px;">
         	        <tr>
                         <td class="style4">
-                            <asp:Label ID="Label1" runat="server" BackColor="Lime" Text="起始日期："></asp:Label>
+                            <asp:UpdatePanel ID="UpdatePanel5" runat="server">
+                                <ContentTemplate>
+                                    <asp:Label ID="Label1" runat="server" BackColor="Lime" Text="起始日期："></asp:Label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                             <br />
-                            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                            <asp:UpdatePanel ID="UpdatePanel2" runat="server" ChildrenAsTriggers="true">
                                 <ContentTemplate>
                                     <asp:Calendar ID="Calendar1" runat="server" Font-Size="Small" 
                                         onselectionchanged="Calendar1_SelectionChanged">
@@ -158,9 +144,13 @@
                             </asp:UpdatePanel>
                         </td>
                         <td class="style6">
-                            <asp:Label ID="Label2" runat="server" BackColor="Lime" Text="截止日期："></asp:Label>
+                            <asp:UpdatePanel ID="UpdatePanel4" runat="server">
+                                <ContentTemplate>
+                                    <asp:Label ID="Label2" runat="server" BackColor="Lime" Text="截止日期："></asp:Label>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                             <br />
-                            <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                            <asp:UpdatePanel ID="UpdatePanel3" runat="server" ChildrenAsTriggers="true">
                                 <ContentTemplate>
                                     <asp:Calendar ID="Calendar2" runat="server" Font-Size="Small" 
                                         onselectionchanged="Calendar2_SelectionChanged">
@@ -202,7 +192,8 @@
                    </table>
                 </td>
                 <td class="style3">
-                    <table border="0" cellspacing="0" cellpadding="0" style="width:378px; margin-bottom: 0px;">
+                    <table border="0" cellspacing="0" cellpadding="0" 
+                        style="width:358px; margin-bottom: 0px;">
                     <tr>
                         <td class="bwidth">   
                             <asp:Panel ID="Panel9" runat="server" Width="173px">
@@ -214,7 +205,8 @@
                         </td>
                     </tr>
                     </table>
-                    <table border="0" cellspacing="0" cellpadding="0" style="width:378px; margin-bottom: 0px;">
+                    <table border="0" cellspacing="0" cellpadding="0" 
+                        style="width:358px; margin-bottom: 0px;">
                         <asp:ContentPlaceHolder id="FunctionalGroup" runat="server">
                         </asp:ContentPlaceHolder>
                     </table>

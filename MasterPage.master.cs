@@ -304,9 +304,9 @@ public partial class MasterPage : System.Web.UI.MasterPage
             split[2] = split[2].Insert(0, "0");
         }
         stBegin = split[0] + "-" + split[1] + "-" + split[2];
-        //TextBox1.Text = stBegin;
-        string _script = "$('#TextBox1').val('"+stBegin+"')";
-        ScriptManager.RegisterStartupScript(this, this.GetType(), "", _script, true);
+        Label1.Text = "起始日期：" + stBegin;
+        //string _script = "$('#TextBox1.Text').val('"+stBegin+"')";
+        //ScriptManager.RegisterStartupScript(this, this.GetType(), "", _script, true);
     }
     /************************************************************************/
     /* 日历控件二进行日期选择                                                               
@@ -336,21 +336,30 @@ public partial class MasterPage : System.Web.UI.MasterPage
             split[2] = split[2].Insert(0, "0");
         }
         stEnd = split[0] + "-" + split[1] + "-" + split[2];
-        TextBox2.Text = stEnd;
+        Label2.Text = "截止日期：" + stEnd;
+        //string _script = "$('#TextBox2.Text').val('" + stBegin + "')";
+        //ScriptManager.RegisterStartupScript(this, this.GetType(), "", _script, true);
     }
     /************************************************************************/
     /* 查询按钮控件                                                               
     /************************************************************************/
     protected void Button1_Click(object sender, EventArgs e)
     {
-        int n = string.Compare(TextBox1.Text, TextBox2.Text);    //-1: 1<2  0: 1=2  1: 1>2
+        //int n = string.Compare(TextBox1.Text, TextBox2.Text);    //-1: 1<2  0: 1=2  1: 1>2
+        
+        if (Label1.Text.Length <= 5 || Label2.Text.Length <= 5)
+        {
+            Response.Write("<script>window.confirm('请选择正确的日期区间！');</script>");
+            return;
+        }
+        int n = string.Compare(Label1.Text.Substring(5, 10), Label2.Text.Substring(5, 10));
         if (n == 1)
         {
             Response.Write("<script>window.confirm('请选择正确的日期区间！');</script>");
             return;
         }
-        GetFileName(dirPathSource + "Image\\", TextBox1.Text, TextBox2.Text, imagefInfoPath);   //读取符合条件的图像文件名称
-        GetFileName(dirPathSource + "Temp\\", TextBox1.Text, TextBox2.Text, tempfInfoPath);   //读取符合条件的温度文件名称
+        GetFileName(dirPathSource + "Image\\", Label1.Text.Substring(5, 10), Label2.Text.Substring(5, 10), imagefInfoPath);   //读取符合条件的图像文件名称
+        GetFileName(dirPathSource + "Temp\\", Label1.Text.Substring(5, 10), Label2.Text.Substring(5, 10), tempfInfoPath);   //读取符合条件的温度文件名称
         //检索到文件写入数据库里
         DataCommand(@"DELETE FROM file_path_table");
         for (int i = 1; i < imagefInfoPath.Count + 1; i++)
@@ -361,13 +370,14 @@ public partial class MasterPage : System.Web.UI.MasterPage
             string SQLCommand = String.Format(@"INSERT INTO file_path_table(fpt_band, fpt_id, fpt_chanel,fpt_timedate) VALUES (""{0}"",""{1}"",""{2}"",""{3}"")", st_Band, i, st_Chanel,st_TimeDate);
             DataCommand(SQLCommand);
         }
-        Response.Write("<script>window.location.href=window.location.href;</script>");    //刷新一下    
+        Response.Write("<script>window.location.href=window.location.href;</script>");    //刷新一下 
+       // this.Button1.BackColor = System.Drawing.Color.Red;
     }
     /*#######################################################################/
     /# 数据库服务                                                               
     /#######################################################################*/
     //数据库的路径
-    public string DataFile = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=F:\离线分析软件\桌面\ruishiprogress20170626\App_Data\Database.accdb";
+    public string DataFile = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=F:\OfflineAnalysisSoftware\ASP.Net\App_Data\Database.accdb";
     /************************************************************************/
     /* 用于插入，删除，更新指令的执行
     /************************************************************************/

@@ -15,10 +15,10 @@ public partial class ShowImage : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         //string str_ImagePath = Request.Cookies["myCookie"].Value;
-        Application.Lock();
-        string str_ImagePath = Application["name"].ToString();
-        Application.UnLock();
-        inPutDatToShowBmp(str_ImagePath);
+        //Application.Lock();
+        //string str_ImagePath = Application["name"].ToString();
+        //Application.UnLock();
+        inPutDatToShowBmp("D:\\DataBase\\F01C02\\Image\\2016-09-18 00-39-36-F01C02-B.dat");
     }
     public void inPutDatToShowBmp(String filename)
     {
